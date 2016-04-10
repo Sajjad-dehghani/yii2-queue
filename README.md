@@ -37,9 +37,9 @@ return [
     // ...
     'controllerMap' => [
         'queue' => [
-	    'class' => 'UrbanIndo\Yii2\Queue\Console\Controller',
-	    //'sleepTimeout' => 1
-	],
+            'class' => 'UrbanIndo\Yii2\Queue\Console\Controller',
+            //'sleepTimeout' => 1
+        ],
         
     ],
 ];
