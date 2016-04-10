@@ -212,6 +212,7 @@ For example
         'queue' => [
             /* @var $queue UrbanIndo\Yii2\Queue\Web\Controller */
             'class' => 'UrbanIndo\Yii2\Queue\Web\Controller',
+            //'sleepTimeout' => 1
         ]
     ],
 ```
