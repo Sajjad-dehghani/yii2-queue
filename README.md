@@ -36,7 +36,8 @@ After the installation, first step is to set the console controller.
 return [
     // ...
     'controllerMap' => [
-        'queue' => 'UrbanIndo\Yii2\Queue\Console\Controller'
+        'queue' => 'UrbanIndo\Yii2\Queue\Console\Controller',
+        //'sleepTimeout' => 1
     ],
 ];
 ```
@@ -211,8 +212,7 @@ For example
     'controllerMap' => [
         'queue' => [
             /* @var $queue UrbanIndo\Yii2\Queue\Web\Controller */
-            'class' => 'UrbanIndo\Yii2\Queue\Web\Controller',
-            //'sleepTimeout' => 1
+            'class' => 'UrbanIndo\Yii2\Queue\Web\Controller'
         ]
     ],
 ```
