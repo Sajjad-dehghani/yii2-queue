@@ -25,7 +25,7 @@ use UrbanIndo\Yii2\Queue\Queue;
  * 
  * OR
  * 
- return [
+ * return [
  *    // ...
  *     'controllerMap' => [
  *         'queue' => [
