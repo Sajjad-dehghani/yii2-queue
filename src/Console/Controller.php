@@ -10,6 +10,7 @@ namespace UrbanIndo\Yii2\Queue\Console;
 
 use UrbanIndo\Yii2\Queue\Job;
 use UrbanIndo\Yii2\Queue\Queue;
+use yii\base\InvalidParamException;
 
 /**
  * QueueController handles console command for running the queue.
@@ -101,6 +102,14 @@ class Controller extends \yii\console\Controller
      */
     public function actionListen($cwd = null, $timeout = null, $env = [])
     {
+        if (!is_numeric($this->sleepTimeout)) {
+            throw new InvalidParamException('($sleepTimeout) must be an number');
+        }
+
+        if ($this->sleepTimeout < 0) {
+            throw new InvalidParamException('($sleepTimeout) must be greater or equal than 0');
+        }
+        
         $this->stdout("Listening to queue...\n");
         $this->initSignalHandler();
         $command = PHP_BINARY . " {$this->getScriptPath()} {$this->_name}/run";
