@@ -53,7 +53,7 @@ class Controller extends \yii\console\Controller
     /**
      * @var integer sleep timeout for infinite loop in second
      */
-    public $sleepTimeout = null;
+    public $sleepTimeout = 0;
 
     /**
      * @var string the name of the command.
@@ -108,7 +108,7 @@ class Controller extends \yii\console\Controller
         while (true) {
             $this->stdout("Running new process...\n");
             $this->runQueueFetching($command, $cwd, $timeout, $env);
-            if ($this->sleepTimeout) {
+            if ($this->sleepTimeout > 0) {
                 sleep($this->sleepTimeout);
             }
         }
