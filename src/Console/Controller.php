@@ -67,6 +67,15 @@ class Controller extends \yii\console\Controller
     public function init()
     {
         parent::init();
+        
+        if (!is_numeric($this->sleepTimeout)) {
+            throw new InvalidParamException('($sleepTimeout) must be an number');
+        }
+
+        if ($this->sleepTimeout < 0) {
+            throw new InvalidParamException('($sleepTimeout) must be greater or equal than 0');
+        }
+        
         $this->queue = \yii\di\Instance::ensure($this->queue, Queue::className());
     }
 
@@ -102,14 +111,6 @@ class Controller extends \yii\console\Controller
      */
     public function actionListen($cwd = null, $timeout = null, $env = [])
     {
-        if (!is_numeric($this->sleepTimeout)) {
-            throw new InvalidParamException('($sleepTimeout) must be an number');
-        }
-
-        if ($this->sleepTimeout < 0) {
-            throw new InvalidParamException('($sleepTimeout) must be greater or equal than 0');
-        }
-        
         $this->stdout("Listening to queue...\n");
         $this->initSignalHandler();
         $command = PHP_BINARY . " {$this->getScriptPath()} {$this->_name}/run";
